@@ -1,0 +1,44 @@
+<?php
+/**
+ * Copyright (c) 2018.  MyArtSide
+ */
+
+/**
+	 * Created by PhpStorm.
+	 * User: user3
+	 * Date: 04.04.2018
+	 * Time: 11:56
+	 */
+?>
+<?php
+	$homes          = '/home';
+	$usr_homedir    = $homes.'/'.$user->name;
+	$usr_htmldir    = $usr_homedir.'/public_html';
+	if(file_exists($usr_htmldir.'/cms-system/views/usr_home_projects.phtml')){
+		$usr_systempath = $usr_htmldir.'/cms-system/views';
+		$usr_vfile      = $usr_systempath . '/usr_home_projects';
+	}else{
+		$usr_systempath = $usr_htmldir.'/cms-project-system';
+		$usr_vfile      = $usr_systempath . '/usr_homedir';
+	}
+	$usr_dbs = $usr_htmldir.'/user-db';
+	$usr_templates = $usr_htmldir.'/user-templates';
+	$usr_addons = $usr_htmldir.'/user-addons';
+	if(file_exists($usr_vfile)){
+		echo '<br><hr><br>';
+		//include_once $usr_vfile;
+		echo '<div class="container page-container user-page-container">';
+		echo $this->partial($usr_vfile, $this->getParams());
+		echo '</div>';
+		echo '<br/><hr/><br/>' ;
+	}
+?>
+<div class="iframe-responsive embed-responsive embed-responsive-16by9">
+	<iframe class="embed-responsive-item" src="http://ewgkamenz.de.udev/admin.php"></iframe>
+</div>
+
+
+
+		
+		
+

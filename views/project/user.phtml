@@ -1,0 +1,200 @@
+<?php
+/**
+ * Copyright (c) 2018.  MyArtSide 
+ */
+
+/** @var \App\Models\Project[] $projects */
+?>
+<link rel="stylesheet" type="text/css" href="/css/sidr/sidr.light.min.css">
+<?php if (is_array($projects) && count($projects) > 0): ?>
+    <?php include 'left-menu.phtml' ?>
+    <?php include 'right-menu.phtml' ?>
+    <div class="project-toolbar">
+        <p class="btn-group-text toolbar-info" style="display: block;">
+            <span>1 Projekt(e) ausgewählt</span>
+            <a href="#" class="btn-link btn-reset-selected">
+                <i class="fa fa-close"></i>
+            </a>
+        </p>
+    </div>
+    <table class="table table-bordered table-striped table-hover">
+        <thead>
+        <tr>
+            <th style="padding:5px;text-align: center;width:20px;">
+                <div class="checkbox hidden" readonly="readonly">
+                    <label>
+                        <input class="project-item" type="checkbox" name="checkAll" value="all" id="checkAll" >
+                    </label>
+                </div>
+            </th>
+            <th>Domain</th>
+            <th>Name</th>
+            <th width="70">Type</th>
+            <th width="150">Erstellt am</th>
+            <th width="125">Optionen</th>
+        </tr>
+        </thead>
+        <tbody>
+        <?php foreach ($projects as $p): ?>
+            <?php $label = ($p->getType() === 'shop') ? 'info' : 'default' ?>
+            <tr>
+                <td>
+                    <div class="item">
+                        <label>
+                            <input class="project-item" type="checkbox" name="project[]" value="<?php echo $p->getProjectPath() ?>">
+                        </label>
+                    </div>
+                </td>
+                <th>
+                    <a href="<?php echo $p->getExternalUrl() ?>" target="_blank"><?php echo $p->getUrl() ?></a>
+                    <?php if (false !== $dbUrl && false !== ($dbAdmin = $p->getDbUrl())): ?>
+                        <a href="<?php echo $dbAdmin ?>" target="_blank"  title="Datenbank Admin" class="pull-right btn btn-default btn-xs">
+                            <span class="fa fa-database"></span>
+                        </a>
+                    <?php endif; ?>
+                </th>
+                <td><?php echo $p->getName() ?></td>
+                <td><span class="label label-<?php echo $label ?>"><?php echo $p->getType() ?></span></td>
+                <td><?php echo $p->getCreatedDate() ?></td>
+                <td>
+                    <a href="#" title="Projekt hochladen" class="pull-right btn btn-default btn-sm"><span class="fa fa-cloud-upload"></span></a>
+                    <a href="#" style="background-color: red" title="Projekt löschen" class="pull-right btn btn-default btn-sm"><span class="fa fa-times"></span></a>
+                    <a href="#" title="Projekt Einstellungen" class="pull-right btn btn-default btn-sm"><span class="fa fa-cogs"></span></a>
+                </td>
+            </tr>
+        <?php endforeach; ?>
+        </tbody>
+    </table>
+    <div class="modal fade" id="ProjectModal" tabindex="-1" role="dialog" aria-labelledby="projectModalLabel" data-backdrop="false">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                    <h4 class="modal-title" id="projectModalLabel">
+                        Delete media                    </h4>
+                </div>
+                <div class="modal-body">
+                    <p>Folgende Einträge haben Sie ausgewählt:</p>
+                    <ul class="item-list"></ul>
+                </div>
+                <div class="modal-footer">
+                    <form action="admin.php?module=media&amp;controller=file&amp;action=delete&amp;back=media" method="post">
+                        <button type="button" class="btn btn-default btn-delete-cancel" data-dismiss="modal">
+                            Abbrechen                        </button>
+                        <button type="submit" class="btn btn-danger btn-delete-confirm">
+                            Ja, löschen!                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="popup-btn" style="position: fixed;left: 100px;top: 150px;" id="popUpBtn-left">
+        <ul class="list-inline left" data-spy="affix" data-offset-top="100">
+            <li>
+                <a  id="left-menu" href="#left-menu" class="back-to-refer" title="Hinzufügen" style="">
+                    <i class="fa fa-arrow-circle-o-right fa-5x" aria-hidden="true"></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div class="popup-btn" style="position: fixed;right: 100px;top: 150px;" id="popUpBtn-right">
+        <ul class="list-inline right" data-spy="affix" data-offset-top="100">
+            <li>
+                <a id="right-menu"  href="#right-menu" class="back-to-refer" title="Herunterladen" style="">
+                    <i class="fa fa-arrow-circle-o-left fa-5x" aria-hidden="true"></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+<script>
+    $(document).ready(function() {
+
+        $('#left-menu').sidr({
+            name: 'sidr-left',
+            side: 'left'
+        });
+        $('#right-menu').sidr({
+            name: 'sidr-right',
+            side: 'right'
+        });
+    })
+</script>
+    <script>
+        var projectPaths        = [];
+        var projectItems      = $(".project-item");
+        var projectChecked    = $(".project-item:checked");
+        var projectInfo       = $('.toolbar-info').hide();
+        var popupBtn           = $('.popup-btn').hide();
+        var projectModal      = $('#projectModal');
+        var btnReset        = $('.btn-reset-selected');
+        /*
+        var deleteCancel    = $('.btn-delete-cancel');
+        var mediaGrid       = $('.media-item-wrapper');
+        var uploadWrapper   = $('.upload-wrapper').hide();
+
+        $('.btn-upload-view').on('click', function(e) {
+            if (mediaGrid.is(':hidden') === true) {
+                mediaGrid.slideDown();
+                uploadWrapper.slideUp();
+            } else {
+                uploadWrapper.slideDown();
+                mediaGrid.slideUp();
+            }
+        });
+        */
+
+        projectItems.on('change', function () {
+            projectPaths = [];
+            projectItems.each(function (i, el) {
+                $(el).closest('div.item').removeClass('active');
+            });
+            projectChecked = $(".project-item:checked");
+            if (projectChecked.length > 0) {
+                projectInfo.find('span').text(projectChecked.length + ' Projekt(e) ausgewählt');
+                projectInfo.show();
+                popupBtn.show();
+
+                projectChecked.each(function(i, el) {
+                    projectPaths.push($(el).val());
+                    $(el).closest('div.item').addClass('active');
+                });
+            }
+            if (projectPaths.length === 0) {
+                projectInfo.hide();
+                popupBtn.hide();
+            }
+        });
+
+        projectModal.on('show.bs.modal', function () {
+            var modal = $(this);
+            var form  = modal.find('form');
+            var list = modal.find('.item-list');
+            $(".media-select-path").remove();
+            list.html('');
+            $(mediaPaths).each(function(i) {
+                var field = '<input type="hidden" class="hidden media-selected-path" name="path[]" value="'+ mediaPaths[i] +'"/>';
+                form.append(field);
+                list.append('<li>' + mediaPaths[i] + '</li>');
+            });
+        });
+
+        btnReset.on('click', function (e) {
+            e.preventDefault();
+            $(".project-item").prop('checked', false);
+            projectItems.each(function (i, el) {
+                $(el).closest('div.item').removeClass('active');
+            });
+            projectPaths = [];
+            /*projectDelBtn.prop('disabled', true);*/
+            projectInfo.hide();
+
+        });
+
+    </script>
+
+<?php else: ?>
+    <p class="lead text-center">Keine Projekte vorhanden</p>
+<?php endif; ?>

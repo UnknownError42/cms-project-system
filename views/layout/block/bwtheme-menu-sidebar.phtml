@@ -1,0 +1,245 @@
+<?php
+/**
+ * Copyright (c) 2018.  MyArtSide
+ */
+
+/**
+	 * Created by PhpStorm.
+	 * User: user3
+	 * Date: 04.04.2018
+	 * Time: 11:46
+	 */
+?>
+<aside class="webmin-sidebar hidden-xs">
+	<nav class="navbar-aside" role="navigation">
+		<ul class="aside-nav">
+			<li><a href="#" data-open="hideMenu"><i class="fa fa-fw fa-bars"></i><span class="aside-text">Hide Menu</span></a></li>
+			<li class="selected"><a href="#projects" data-open="#projects"><i class="fa fa-fw fa-rocket"></i><span class="aside-text">Projekte<span class="aside-arrow"><i class="fa fa-angle-right"></i></span></span></a></li>
+			<li class="submenu" id="projects">
+				<ul class="aside-nav">
+					<li><a href="backup-config/" target="page-container">Meine Projekte</a></li>
+					<li><a href="change-user/" target="page-container">Private Projekte</a></li>
+					<li><a href="webmin-notes/" target="page-container">Projekt Archiv</a></li>
+					<hr>
+					<li><a href="usermin/" target="page-container">Projekt Konfigurationen</a></li>
+				</ul>
+			</li>
+			<li><a href="#" data-open="#cms"><i class="fa fa-fw fa-wrench"></i><span class="aside-text">CMS / Module<span class="aside-arrow"><i class="fa fa-angle-right"></i></span></span></a></li>
+			<li class="submenu" id="cms">
+				<ul class="aside-nav">
+					<li><a href="#" data-open="#cmsCore"><i class="fa fa-fw fa-wrench"></i><span class="aside-text">CMS Core<span class="aside-arrow"><i class="fa fa-angle-right"></i></span></span></a></li>
+					<li class="submenu" id="cmsCore">
+						<ul class="aside-nav">
+							<li><a href="init/" target="page-container">Base</a></li>
+							<li><a href="passwd/" target="page-container">Admin</a></li>
+							<li><a href="logrotate/" target="page-container">Media</a></li>
+							<li><a href="mount/" target="page-container">CMS</a></li>
+							<li><a href="fsdump/" target="page-container">Immo</a></li>
+							<li><a href="logrotate/" target="page-container">Suche</a></li>
+							<li><a href="logrotate/" target="page-container">Catalog</a></li>
+							<li><a href="logrotate/" target="page-container">API</a></li>
+							<li><a href="logrotate/" target="page-container">Wizard</a></li>
+							<li><a href="logrotate/" target="page-container">onOffice</a></li>
+							<li><a href="logrotate/" target="page-container">XML</a></li>
+							<hr>
+							<li><a href="shell/" target="page-container">Specials</a></li>
+						</ul>
+					</li>
+					<li><a href="#" data-open="#cmsModules"><i class="fa fa-fw fa-wrench"></i><span class="aside-text">CMS Module<span class="aside-arrow"><i class="fa fa-angle-right"></i></span></span></a></li>
+					<li class="submenu" id="cmsModules">
+						<ul class="aside-nav">
+							<li><a href="init/" target="page-container">Base</a></li>
+							<li><a href="passwd/" target="page-container">Admin</a></li>
+							<li><a href="logrotate/" target="page-container">Media</a></li>
+							<li><a href="mount/" target="page-container">CMS</a></li>
+							<li><a href="fsdump/" target="page-container">Immo</a></li>
+							<li><a href="logrotate/" target="page-container">Suche</a></li>
+							<li><a href="logrotate/" target="page-container">Catalog</a></li>
+							<li><a href="logrotate/" target="page-container">API</a></li>
+							<li><a href="logrotate/" target="page-container">Wizard</a></li>
+							<li><a href="logrotate/" target="page-container">onOffice</a></li>
+							<li><a href="logrotate/" target="page-container">XML</a></li>
+							<hr>
+							<li><a href="shell/" target="page-container">Specials</a></li>
+						</ul>
+					</li>
+					<hr>
+					<li><a href="shell/" target="page-container">Specials</a></li>
+				</ul>
+			</li>
+			<li><a href="#" data-open="#libs"><i class="fa fa-fw fa-rocket"></i><span class="aside-text">Bibliotheken<span class="aside-arrow"><i class="fa fa-angle-right"></i></span></span></a></li>
+				<li class="submenu" id="libs">
+					<ul class="aside-nav">
+						<li><a href="bind8/" target="page-container">Schriftarten</a></li>
+						<li><a href="tomcat/" target="page-container">Javascript</a></li>
+						<li><a href="virtualmin-awstats/" target="page-container">Stylesheets</a></li>
+						<li><a href="virtualmin-awstats/" target="page-container">Icons</a></li>
+						<li><a href="virtualmin-awstats/" target="page-container">Pictures</a></li>
+						<li><a href="virtualmin-awstats/" target="page-container">Codeschnipsel</a></li>
+						<hr>
+						<li><a href="shell/" target="page-container">Specials</a></li>
+					</ul>
+				</li>
+				<li><a href="#" data-open="#cmsTemplates"><i class="fa fa-fw fa-file"></i><span class="aside-text">CMS Templates<span class="aside-arrow"><i class="fa fa-angle-right"></i></span></span></a></li>
+				<li class="submenu" id="cmsTemplates">
+					<ul class="aside-nav">
+						<li><a href="shell/" target="page-container">Layout</a></li>
+						<li><a href="#" data-open="#tmplBlock"><i class="fa fa-fw fa-file"></i><span class="aside-text">Block<span class="aside-arrow"><i class="fa fa-angle-right"></i></span></span></a><</li>
+						<li class="submenu" id="tmplBlock">
+							<ul class="aside-nav">
+								<li><a href="shell/" target="page-container">Header</a></li>
+								<li><a href="shell/" target="page-container">Infoboxen</a></li>
+								<li><a href="shell/" target="page-container">Slider</a></li>
+								<li><a href="shell/" target="page-container">Content</a></li>
+								<li><a href="shell/" target="page-container">Footer</a></li>
+								<hr>
+								<li><a href="shell/" target="page-container">Specials</a></li>
+							</ul>
+						</li>
+						<li><a href="#" data-open="#tmplBase"><i class="fa fa-fw fa-file"></i><span class="aside-text">Base<span class="aside-arrow"><i class="fa fa-angle-right"></i></span></span></a></li>
+						<li class="submenu" id="tmplBase">
+							<ul class="aside-nav">
+								<li><a href="shell/" target="page-container">CMS</a></li>
+								<li><a href="shell/" target="page-container">Collection</a></li>
+								<li><a href="shell/" target="page-container">Form</a></li>
+								<li><a href="shell/" target="page-container">Gallery</a></li>
+								<li><a href="shell/" target="page-container">Google</a></li>
+								<li><a href="shell/" target="page-container">Mail</a></li>
+								<li><a href="shell/" target="page-container">Navigation</a></li>
+								<li><a href="shell/" target="page-container">Suche</a></li>
+								<li><a href="shell/" target="page-container">Catalog</a></li>
+								<li><a href="shell/" target="page-container">Blog</a></li>
+								<li><a href="shell/" target="page-container">News</a></li>
+								<li><a href="shell/" target="page-container">Wizard</a></li>
+								<hr>
+								<li><a href="shell/" target="page-container">Specials</a></li>
+							</ul>
+						</li>
+						<hr>
+						<li><a href="shell/" target="page-container">Specials</a></li>
+					</ul>
+				</li>
+				<li><a href="#" data-open="#helper"><i class="fa fa-fw fa-shield"></i><span class="aside-text">Helfer<span class="aside-arrow"><i class="fa fa-angle-right"></i></span></span></a></li>
+				<li class="submenu" id="helper">
+					<ul class="aside-nav">
+						<li><a href="shell/" target="page-container">Dateimanager</a></li>
+						<hr>
+						<li><a href="shell/" target="page-container">Actionmanager</a></li>
+						<hr>
+						<li><a href="shell/" target="page-container">Formular Builder</a></li>
+						<hr>
+						<li><a href="shell/" target="page-container">Template Builder</a></li>
+						<hr>
+						<li><a href="shell/" target="page-container">DB Admins</a></li>
+						<hr>
+						<li><a href="virtualmin-awstats/" target="page-container">CSS Generator</a></li>
+						<hr>
+						<li><a href="#" data-open="#exporter"><i class="fa fa-fw fa-shield"></i><span class="aside-text">Exporter<span class="aside-arrow"><i class="fa fa-angle-right"></i></span></span></a></li>
+							<li class="submenu" id="exporter">
+								<ul class="aside-nav">
+									<li><a href="shell/" target="page-container">Einstellungen</a></li>
+									<li><a href="shell/" target="page-container">Static Pages</a></li>
+									<li><a href="shell/" target="page-container">CMS Content</a></li>
+									<li><a href="shell/" target="page-container">CSS Layout & JS Libs</a></li>
+									<li><a href="shell/" target="page-container">Dateien</a></li>
+								</ul>
+							</li>
+						<hr>
+						<li><a href="#" data-open="#importer"><i class="fa fa-fw fa-shield"></i><span class="aside-text">Importer<span class="aside-arrow"><i class="fa fa-angle-right"></i></span></span></a></li>
+							<li class="submenu" id="importer">
+								<ul class="aside-nav">
+									<li><a href="#" data-open="#imp_oldCMS"><i class="fa fa-fw fa-shield"></i><span class="aside-text">Andrej Systeme<span class="aside-arrow"><i class="fa fa-angle-right"></i></span></span></a></li>
+									<li class="submenu" id="imp_oldCMS">
+										<ul class="aside-nav">
+											<li><a href="shell/" target="page-container">Einstellungen</a></li>
+											<li><a href="shell/" target="page-container">Static Pages</a></li>
+											<li><a href="shell/" target="page-container">CMS Content</a></li>
+											<li><a href="shell/" target="page-container">CSS Layout & JS Libs</a></li>
+											<li><a href="shell/" target="page-container">Dateien</a></li>
+										</ul>
+									</li>
+									<li><a href="#" data-open="#imp_oldBianca"><i class="fa fa-fw fa-shield"></i><span class="aside-text">Bianca Systeme<span class="aside-arrow"><i class="fa fa-angle-right"></i></span></span></a></li>
+									<li class="submenu" id="imp_oldBianca">
+										<ul class="aside-nav">
+											<li><a href="shell/" target="page-container">Einstellungen</a></li>
+											<li><a href="shell/" target="page-container">Static Pages</a></li>
+											<li><a href="shell/" target="page-container">CMS Content</a></li>
+											<li><a href="shell/" target="page-container">CSS Layout & JS Libs</a></li>
+											<li><a href="shell/" target="page-container">Dateien</a></li>
+										</ul>
+									</li>
+									<br>
+									<hr>
+									<li><a href="#" data-open="#imp_othera"><i class="fa fa-fw fa-shield"></i><span class="aside-text">sonstige<span class="aside-arrow"><i class="fa fa-angle-right"></i></span></span></a></li>
+									<li class="submenu" id="imp_other">
+										<ul class="aside-nav">
+											<li><a href="shell/" target="page-container">Einstellungen</a></li>
+											<li><a href="shell/" target="page-container">Static Pages</a></li>
+											<li><a href="shell/" target="page-container">CMS Content</a></li>
+											<li><a href="shell/" target="page-container">CSS Layout & JS Libs</a></li>
+											<li><a href="shell/" target="page-container">Dateien</a></li>
+										</ul>
+									</li>
+									<br/>
+									<hr>
+									<li><a href="shell/" target="page-container">Einstellungen</a></li>
+								</ul>
+							</li>
+					</ul>
+				</li>
+				<li><a href="#" data-open="#settings"><i class="fa fa-fw fa-hdd-o"></i><span class="aside-text">Einstellungen<span class="aside-arrow"><i class="fa fa-angle-right"></i></span></span></a></li>
+				<li class="submenu" id="settings">
+					<ul class="aside-nav">
+						<li><a href="iscsi-client/" target="page-container">iSCSI Client</a></li>
+						<li><a href="fdisk/" target="page-container">Partitions on Local Disks</a></li>
+					</ul>
+				</li>
+				<li><a href="#" data-open="#stats"><i class="fa fa-fw fa-puzzle-piece"></i><span class="aside-text">Statistiken<span class="aside-arrow"><i class="fa fa-angle-right"></i></span></span></a></li>
+				<li class="submenu" id="stats">
+					<ul class="aside-nav">
+						<li><a href="adsl-client/" target="page-container">Globale Statistik</a></li>
+						<li><a href="apache/" target="page-container">Projektstatistik</a></li>
+						<li><a href="bacula-backup/" target="page-container">Benutzerstatistik</a></li>
+					</ul>
+				</li>
+				<hr>
+				<li><a href="#" data-open="#help"><i class="fa fa-fw fa-hdd-o"></i><span class="aside-text">Hilfe<span class="aside-arrow"><i class="fa fa-angle-right"></i></span></span></a></li>
+				<li class="submenu" id="help">
+					<ul class="aside-nav">
+						<li><a href="iscsi-client/" target="page-container">Core Docs</a></li>
+						<li><a href="fdisk/" target="page-container">Module</a></li>
+						<li><a href="fdisk/" target="page-container">ObjectTypeOf - Hilfe</a></li>
+					</ul>
+				</li>
+				<li><a href="#" data-open="#wiki"><i class="fa fa-fw fa-hdd-o"></i><span class="aside-text">Wiki<span class="aside-arrow"><i class="fa fa-angle-right"></i></span></span></a></li>
+				<li class="submenu" id="wiki">
+					<ul class="aside-nav">
+						<li><a href="iscsi-client/" target="page-container">iSCSI Client</a></li>
+						<li><a href="fdisk/" target="page-container">Partitions on Local Disks</a></li>
+					</ul>
+				</li>
+				<li><a href="#" data-open="#calendar"><i class="fa fa-fw fa-hdd-o"></i><span class="aside-text">Kalender<span class="aside-arrow"><i class="fa fa-angle-right"></i></span></span></a></li>
+				<li class="submenu" id="calendar">
+					<ul class="aside-nav">
+						<li><a href="iscsi-client/" target="page-container">Projekttermine</a></li>
+						<li><a href="fdisk/" target="page-container">Benutzerkalender</a></li>
+					</ul>
+				</li>
+				<hr>
+				<li><a href="#" data-open="#actions"><i class="fa fa-fw fa-hdd-o"></i><span class="aside-text">Macros & Aktionen<span class="aside-arrow"><i class="fa fa-angle-right"></i></span></span></a></li>
+					
+					<li class="submenu" id="actions">
+						<ul class="aside-nav">
+							<li><a href="iscsi-client/" target="page-container">Übersicht</a></li>
+							<li><a href="fdisk/" target="page-container">Erstellen</a></li>
+							<li><a href="fdisk/" target="page-container">Hilfe</a></li>
+						</ul>
+					</li>
+			</ul>
+			<form class="search-aside" role="search" action="webmin_search.cgi" target="page-container">
+				<div class="form-group">
+					<input class="form-control" name="search" placeholder="Suche auf Udev" type="text" data-cip-id="cIPJQ342845639">
+				</div>
+			</form>
+		</nav>
+</aside>

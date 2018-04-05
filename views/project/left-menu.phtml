@@ -1,0 +1,88 @@
+<aside>
+    <div id="sidr-left">
+        <!-- Your content -->
+        <div class="menu-header">
+            <a href="#sidr-left" onclick="jQuery.sidr('close', 'sidr-left')"> <i class="fa fa-close fa-2x pull-right" style="padding: 10px;"></i></a>
+            <h3 style="height: 50px;line-height:50px;font-size:22px;">in Projekt einfügen:</h3>
+        </div>
+        <hr/>
+        <div class="menu-body">
+            <div class="menu-part" style="padding: 10px;" >
+                <div class="menu-spacer" style="min-height: 50px; display:none;"></div>
+                <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#module-menu" aria-expanded="true" aria-controls="module-menu">
+                    <i class="fa fa-server fa-1x"></i> Module:
+                </button>
+                <div class="well collapse" id="module-menu">
+                    <ul>
+                        <li><a href="#">List 1</a></li>
+                        <li class="active"><a href="#">List 2</a></li>
+                        <li><a href="#">List 3</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="menu-part" style="padding: 10px;" >
+                <div class="menu-spacer" style="min-height: 50px"></div>
+                <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#cms-templates-menu" aria-expanded="true" aria-controls="cms-templates-menu">
+                    <i class="fa fa-file-archive-o fa-1x"></i> CMS Templates:
+                </button>
+                <div class="well collapse" id="cms-templates-menu">
+                    <ul>
+                        <li><div class="checkbox">
+                                <label>
+                                    <input class="sub-menu-item" type="checkbox" name="project[]" value="">
+                                </label>
+                            </div>
+                            <a href="#">List 1</a>
+                        </li>
+                        <li class="active">
+                            <div class="checkbox">
+                                <label>
+                                    <input class="sub-menu-item" type="checkbox" name="project[]" value="">
+                                </label>
+                            </div>
+                            <a href="#">List 2</a>
+                        </li>
+                        <li><a href="#">List 3</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="menu-part" style="padding: 10px;" >
+                <div class="menu-spacer" style="min-height: 50px"></div>
+                <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#css-js-libs-menu" aria-expanded="true" aria-controls="css-js-libs-menu">
+                    <i class="fa fa-file-code-o fa-1x"></i> JS &amp; CSS:
+                </button>
+                <div class="well collapse" id="css-js-libs-menu">
+                    <ul>
+                        <li><a href="#">List 1</a></li>
+                        <li class="active"><a href="#">List 2</a></li>
+                        <li><a href="#">List 3</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="menu-part" style="padding: 10px;">
+                <div class="menu-spacer" style="min-height: 50px"></div>
+                <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#fonts-libs-menu" aria-expanded="true" aria-controls="fonts-libs-menu">
+                    <i class="fa fa-file-pdf-o fa-1x"></i> Fonts:
+                </button>
+                <div class="well collapse" id="fonts-libs-menu">
+                    <ul>
+                        <li><a href="#">List 1</a></li>
+                        <li class="active"><a href="#">List 2</a></li>
+                        <li><a href="#">List 3</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="menu-part" style="padding: 10px;">
+                <div class="menu-spacer" style="min-height: 50px;"></div>
+                <div class="btn-toolbar pull-right">
+                    <button class="btn btn-primary btn-warning btn-cancel" type="button" onclick="jQuery.sidr('close', 'sidr-left');">
+                        <i class="fa fa-cancel fa-1x"></i> Abbrechen
+                    </button>
+                    <button class="btn btn-primary btn-success" type="button" data-target="" aria-expanded="true" aria-controls=""">
+                        <i class="fa fa-cancel fa-1x"></i> Ok
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</aside>

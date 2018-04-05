@@ -1,0 +1,11 @@
+/*
+ * Copyright (c) 2018.  MyArtSide
+ */
+
+.auswahl path {fill: #888FA2}
+.auswahl .step-one:hover path {fill: #66CC33}
+
+.auswahl rect {fill: #888FA2}
+.auswahl .step-one:hover rect {fill: #66CC33}
+.auswahl .auswahl-inner.btn.active path {fill: #66CC33}
+.auswahl .auswahl-inner.btn.active span {color: #66CC33}

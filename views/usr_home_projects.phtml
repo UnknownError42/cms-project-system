@@ -1,0 +1,316 @@
+
+    <div class="container page-container user-page-container">
+        <?php if (isset($user)): ?>
+            <div class="page-header">
+                <!--<h1><a href="<?php //echo '/~'.$user->name.'/cms-project-system/user.phtml' ?>"><?php //echo 'udev/~'.$user->name.'/ ' ?></a>-->
+		            <h1><a href="<?php echo $usr_vfile ?>"><?php echo 'udev/~'.$user->name.'/ ' ?></a>
+                    <small><?php echo 'Benutzerprojekte' ?></small>
+                    <div class="btn-toolbar pull-right">
+                        <?php if ($user->isAdmin()): ?>
+
+                        <?php else: ?>
+							<!--
+                            <a href="#" class="btn btn-lg btn-success" data-toggle="modal" data-target=".new-modal">
+                                <span class="glyphicon glyphicon-plus"></span>
+                            </a>
+							-->
+                        <?php endif; ?>
+						<!--
+                        <a href="?controller=project&action=stats" class="btn btn-lg btn-default">
+                            <span class="glyphicon glyphicon-stats"></span>
+                        </a>
+						-->
+                        <div class="btn-group">
+							<!--
+                            <button class="btn btn-default btn-lg dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span class="glyphicon glyphicon-user"></span>
+                            </button>
+                            <ul class="dropdown-menu dropdown-menu-right">
+                                <li class="dropdown-header">
+                                    Angemeldet als <?php echo $user->fullname ?>
+                                </li>
+                                <li>
+                                    <a href="#" data-toggle="modal" data-target=".logout-modal">ausloggen</a>
+                                </li>
+								<li class="dropdown-header">
+									Einstellungen
+								</li>
+								<li>
+                                    <a href="#" data-toggle="modal" data-target=".settings-modal">Benutzer Einstellungen</a>
+                                </li>
+                            </ul>
+							-->
+                        </div>
+
+                    </div>
+                </h1>
+            </div>
+
+        <?php endif; ?>
+
+        <?php foreach (\Core\Di::getFlash()->getMessages() as $message): ?>
+            <?php echo $message->render() ?>
+        <?php endforeach; ?>
+					<button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#info1" aria-expanded="true" aria-controls="info1">
+						weitere Informationen: <i class="fa fa-angle-double-down"></i>
+                    </button>
+					<button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#elfinderCollapse" aria-expanded="true" aria-controls="elfinderCollapse">
+						Dateimanager: <i class="fa fa-angle-double-down"></i>
+                    </button>
+					<div class="well collapse" id="info1">
+						<h3> Informationen: </h3>
+						<h3>Windows Explorer Zugriff: \\udev\<?php echo $user->name ?>\.public_html\</h3>
+						<h3><small>Benutzer Stammpfad ($usr_htmldir): <?php echo $usr_htmldir.'/' ?></small></h3>
+						<hr/>
+						<p><strong>Benutzer Vorlagen Pfad (Windows Explorer): \\udev\<?php echo $user->name ?>\.public_html\user-templates</strong></p>
+						<p><small>Benutzer Vorlagen Pfad ($usr_templatespath): </small><?php echo $usr_templates.'/' ?></p>
+						<p><strong>Benutzer DB Pfad (Windows Explorer): \\udev\<?php echo $user->name ?>\.public_html\user-db </strong></p>
+						<p><small>Benutzer DB Pfad ($usr_dbs): </small><?php echo $usr_dbs.'/' ?></p>
+						<p><strong>Benutzer Addons Pfad(Windows Explorer): \\udev\<?php echo $user->name ?>\.public_html\user-addons</strong></p>
+						<p><small>Benutzer Addons Pfad ($usr_addons): </small><?php echo $usr_addons.'/' ?></p>
+						<hr>
+						<p style="color:darkred;"><strong >Diese Datei:</strong> \\udev\<?php echo $user->name ?>\.public_html\cms-system\usr_home_projects.phtml</p>
+					</div>
+					<hr>
+					
+					<div class="well collapse" id="elfinderCollapse">
+						<div id="elfinder">
+							<?php
+								$phpfm = $usr_systempath . '/user/phpfm.php';
+								php($phpfm);
+							?>
+						</div>
+					</div>
+					<hr>
+        <?php //echo $this->getContent() ?>
+    </div>
+	
+	<?php 
+	/*
+    <!--<div class="modal fade logout-modal" tabindex="-1" role="dialog" aria-labelledby="logoutModalLabel">-->
+    <!--<div class="modal-dialog modal-sm" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="logoutModalLabel">Logout</h4>
+                </div>
+                <div class="modal-body">
+                    <p>Willst du dich wirklich ausloggen?</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Abbrechen</button>
+                    <a href="?controller=user&action=logout" class="btn btn-danger">Ja, ausloggen</a>
+                </div>
+            </div>
+        </div>
+    </div>-->
+
+    <!--<div class="modal fade new-modal" tabindex="-1" role="dialog" aria-labelledby="newModalLabel">-->
+        <script type="text/javascript">
+            var pictureList = [
+               "media/template-001.jpg",
+               "media/template-001.jpg",
+               "media/template-002.jpg",
+               "media/template-003.jpg",
+               "media/template-004.jpg",
+               "media/template-005.jpg" ];
+
+           function changePreview(obj){
+
+               var image = document.getElementsByName("preview")[0];
+               image.src = 'media/' + obj.options[obj.selectedIndex].value + '.jpg';
+            }
+			
+			function changeBranding(obj){
+				oFormObject = document.forms['project_create'];
+				oFormElement1 = oFormObject.elements['core'];
+				index1 = oFormElement1.selectedIndex;
+				oFormElement2 = oFormObject.elements['brand-of-project'];
+				index2 = oFormElement2.selectedIndex;
+				
+				var selected_option_value1 = oFormElement1.options[index1].value;
+				var selected_option_value2 = obj.options[obj.selectedIndex].value;
+				if (selected_option_value2 = "-mm" )
+				{
+					var str = oFormElement1.options[index1].value;
+					var str_new = str.replace("-mas", obj.options[obj.selectedIndex].value);
+					oFormElement1.options[index1].value = str_new;
+				} else {
+					var str = oFormElement1.options[index1].value;
+					var str_new = str.replace("-mm", obj.options[obj.selectedIndex].value);
+					oFormElement1.options[index1].value = str_new;
+				}
+               
+            }
+        </script>
+        <div class="modal-dialog modal-sm" role="document">
+            <div class="modal-content">
+                <form action="?controller=project&action=create" method="POST" id="project_create">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="newModalLabel">Projekt erstellen</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label class="control-label" for="name-of-project">Projektname:</label>
+                                    <input type="text" name="name" id="name-of-project" class="form-control" placeholder="my-project.com">
+                                    <p class="help-block"><small>Domainnamen eintragen. z.B: myartside.de</small></p>
+                                </div>
+                            </div>
+                            <div class="col-md-5">
+                                <div class="form-group">
+                                    <label class="control-label" for="type-of-project">Typ:</label>
+                                    <select class="form-control" name="core" id="type-of-project" onchange="changePreview(this);">
+                                        <option value="cms-mas" style="color:green">CMS V1.2.2</option>
+                                        <option value="tmpl-1-mas" style="color:green" >Vorlage: Reifenservice Böhme</option>
+                                        <option value="tmpl-2-mas" style="color:green" >Vorlage: Steuerberater Voss</option>
+                                        <option value="tmpl-3-mas" style="color:green" >Vorlage: LED Handlauf</option>
+                                        <option value="tmpl-4-mas" style="color:green" >Vorlage: Beaty Oase</option>
+                                        <option value="tmpl-5-mas" style="color:green" >Vorlage: Ergbericht-Eulowitz</option>
+                                        <option value="cms-developer-mas"  style="color:darkred">CMS V1.3.5-Entwickler</option>
+                                        <option value="mage" disabled>Magento Shop</option>
+                                    </select>
+									<p class="help-block"><small>Vorlage/Template oder Systemversion auswählen</small></p>
+                                </div>
+                            </div>
+							<div class="col-md-3">
+                                <div class="form-group">
+                                    <label class="control-label" for="brand-of-project">Branding:</label>
+									<select class="form-control" name="brand-of-project" id="brand-of-project" onchange="changeBranding(this);">
+                                        <option value="-mas" selected style="color:orange">MyArtSide GbR</option>
+                                        <option value="-mm" style="color:green" >Moderne Medien GmbH</option>
+									</select>
+									<p class="help-block"><small>Firma auswählen für Copyright,Logos,Hinweise,etc </small></p>
+                                </div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-12">
+							    <img src="media/template-001.jpg" class="img-responsive" id="preview" name="preview">
+							</div>
+							
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Abbrechen</button>
+                        <button type="submit" name="send" class="btn btn-success">Erstellen</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+		
+    </div>
+	<!--<div class="modal fade settings-modal" tabindex="-1" role="dialog" aria-labelledby="newModalLabel2">-->
+        <script type="text/javascript">
+            var pictureList = [
+               "media/template-001.jpg",
+               "media/template-001.jpg",
+               "media/template-002.jpg",
+               "media/template-003.jpg",
+               "media/template-004.jpg",
+               "media/template-005.jpg" ];
+
+           function changePreview2(obj){
+
+               var image = document.getElementsByName("preview")[0];
+               image.src = 'media/' + obj.options[obj.selectedIndex].value + '.jpg';
+            }
+        </script>
+    <!--<div class="modal-dialog modal-sm" role="document">-->
+            <div class="modal-content">
+                <form action="?controller=user&action=update" method="POST">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="newModalLabel2">Benutzer Einstellungen - <?php echo $user->name ?> (<?php echo $user->email ?>)</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-md-8">
+								<div class="form-group">
+                                    <label class="control-label" for="mitarbeiter">Mitarbeiter:</label>
+                                    <input type="text" name="mitarbeiter" id="mitarbeiter" class="form-control" placeholder="<?php echo $user->name ?>" disabled>
+                                    <p class="help-block"><small>Mitarbeitername</small></p>
+                                </div>
+								<div class="form-group">
+                                    <label class="control-label" for="email">interne eMail:</label>
+                                    <input type="text" name="email" id="email" class="form-control" placeholder="<?php echo $user->email ?>" disabled>
+                                    <p class="help-block"><small>Mitarbeiter eMail</small></p>
+                                </div>
+								<div class="form-group">
+                                    <label class="control-label" for="ext_email">externe eMail:</label>
+                                    <input type="text" name="ext_email" id="ext_email" class="form-control" placeholder="@gmail.com">
+                                    <p class="help-block"><small>sekundäre Mail zur Kontaktaufnahme hinterlegen</small></p>
+                                </div>
+								<div class="form-group">
+                                    <label class="control-label" for="mobilephone">Handynummer:</label>
+                                    <input type="text" name="mobilephone" id="mobilephone" class="form-control" placeholder="0049351110">
+                                    <p class="help-block"><small>Handynummer hinterlegen</small></p>
+                                </div>
+								<hr>
+								<div class="form-group">
+                                    <label class="control-label" for="kas_web_link">KAS Webseite URL:</label>
+                                    <input type="text" name="kas_web_link" id="kas_web_link" class="form-control" placeholder="https://kasserver.com">
+                                    <p class="help-block"><small>Link zur KAS Webseite eintragen</small></p>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label" for="kas_web_user">KAS Web Benutzer:</label>
+                                    <input type="text" name="kas_web_user" id="kas_web_user" class="form-control" placeholder="w07d59b">
+                                    <p class="help-block"><small>Loginname für Webseite kasserver.com eintragen</small></p>
+                                </div>
+								<div class="form-group">
+                                    <label class="control-label" for="kas_web_pw">KAS Web Passwort:</label>
+                                    <input type="password" name="kas_web_pw" id="kas_web_pw" class="form-control" placeholder="xahsdaudzmnd78pcmn">
+                                    <p class="help-block"><small>Passwort für Webseite kasserver.com eintragen</small></p>
+								</div>
+								<div class="form-group">
+                                    <label class="control-label" for="kas_ftp_server">KAS FTP Server:</label>
+                                    <input type="text" name="kas_ftp_server" id="kas_ftp_server" class="form-control" placeholder="dd30706.kasserver.com">
+                                    <p class="help-block"><small>Hostname FTP Server eintragen</small></p>
+                                </div>
+								<div class="form-group">
+                                    <label class="control-label" for="kas_ftp_login">KAS FTP login:</label>
+                                    <input type="text" name="kas_ftp_login" id="kas_ftp_login" class="form-control" placeholder="w00e8d6f">
+                                    <p class="help-block"><small>FTP Benutzernamen eintragen</small></p>
+                                </div>
+								<div class="form-group">
+                                    <label class="control-label" for="kas_ftp_pw">KAS FTP Passwort:</label>
+                                    <input type="password" name="kas_ftp_pw" id="kas_ftp_pw" class="form-control" placeholder="xahsdaudzmnd78pcmn">
+                                    <p class="help-block"><small>FTP Passwort eintragen</small></p>
+								</div>
+								<hr>
+								<div class="form-group">
+                                    <label class="control-label" for="kas_ftps" style="float:left;">Nutze FTPS Protokoll:</label>
+                                    <input type="checkbox" name="kas_ftps" id="kas_ftps" class="form-control" style="display:inline-block;width:auto;margin-top: 5px;height:13px;margin-left: 10px;">
+                                    <p class="help-block"><small>Benutze FTPS zur Übertragung auf ftp.kasserver.com?</small></p>
+								</div>
+								<div class="form-group">
+                                    <label class="control-label" for="kas_autosetup" style="float:left;">Auto Setup:</label>
+                                    <input type="checkbox" name="kas_autosetup" id="kas_autosetup" class="form-control" style="display:inline-block;width:auto;margin-top: 5px;height:13px;margin-left: 10px;">
+                                    <p class="help-block"><small>Neue Projekte automatisch auf kasserver.com anlegen?</small></p>
+								</div>
+								<div class="form-group">
+                                    <label class="control-label" for="kas_autosync" style="float:left;">Auto Sync:</label>
+                                    <input type="checkbox" name="kas_autosync" id="kas_autosync" class="form-control" style="display:inline-block;width:auto;margin-top: 5px;height:13px;margin-left: 10px;">
+                                    <p class="help-block"><small>Projekte automatisch mit kasserver.com abgleichen?</small></p>
+								</div>
+                            </div>
+							
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Abbrechen</button>
+                        <button type="submit" name="send" class="btn btn-success">Übernehmen</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+*/
+?>
+
+<?php //echo $this->getFooter() ?>

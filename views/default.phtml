@@ -1,0 +1,27 @@
+<?php
+/**
+ * Copyright (c) 2018.  MyArtSide
+ */
+
+/** Core\View $this */
+?>
+<?php echo $this->getHeader() ?>
+
+<?php
+	
+		//d($GLOBALS, $_SERVER, getEnvByNetwork(), getAllPathByEnV());
+		//d($this->getHeader());
+?>
+<?php echo $this->partial('layout/block/bwtheme-header', $this->getParams()); ?>
+<?php echo $this->partial('layout/block/bwtheme-menu-sidebar', $this->getParams()); ?>
+<?php echo $this->partial('layout/block/bwtheme-udev-content', $this->getParams()); ?>
+
+<?php if (isset($user)): ?>
+	<?php echo $this->partial('layout/block/bwtheme-usr-content', $this->getParams()); ?>
+<?php endif; ?>
+
+<?php echo $this->partial('layout/block/bwtheme-dialogs-modal', $this->getParams()); ?>
+
+ 
+<?php d($this->getFooter()); ?>
+<?php echo $this->getFooter() ?>
