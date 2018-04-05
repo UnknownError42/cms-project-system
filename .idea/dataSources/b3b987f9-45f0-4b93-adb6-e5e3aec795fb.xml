@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="projects.sql3">
+  <database-model serializer="dbm" rdbms="SQLITE" format-version="4.7">
+    <root id="1"/>
+    <schema id="2" parent="1" name="main">
+      <Current>1</Current>
+      <Visible>1</Visible>
+    </schema>
+    <collation id="3" parent="1" name="BINARY"/>
+    <collation id="4" parent="1" name="NOCASE"/>
+    <collation id="5" parent="1" name="RTRIM"/>
+    <table id="6" parent="2" name="domains"/>
+    <table id="7" parent="2" name="projects"/>
+    <table id="8" parent="2" name="sqlite_master">
+      <System>1</System>
+    </table>
+    <table id="9" parent="2" name="sqlite_sequence">
+      <System>1</System>
+    </table>
+    <table id="10" parent="2" name="task"/>
+    <column id="11" parent="6" name="id">
+      <Position>1</Position>
+      <DataType>INTEGER|0s</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+      <DefaultExpression>NULL</DefaultExpression>
+    </column>
+    <column id="12" parent="6" name="domain">
+      <Position>2</Position>
+      <DataType>TEXT|0s</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>NULL</DefaultExpression>
+    </column>
+    <column id="13" parent="6" name="name">
+      <Position>3</Position>
+      <DataType>TEXT|0s</DataType>
+      <DefaultExpression>NULL</DefaultExpression>
+    </column>
+    <column id="14" parent="6" name="core">
+      <Position>4</Position>
+      <DataType>TEXT|0s</DataType>
+      <DefaultExpression>&apos;cms&apos;</DefaultExpression>
+    </column>
+    <column id="15" parent="6" name="docroot">
+      <Position>5</Position>
+      <DataType>TEXT|0s</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>NULL</DefaultExpression>
+    </column>
+    <column id="16" parent="6" name="updated">
+      <Position>6</Position>
+      <DataType>NUMERIC|0s</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>NULL</DefaultExpression>
+    </column>
+    <column id="17" parent="6" name="created">
+      <Position>7</Position>
+      <DataType>NUMERIC|0s</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>NULL</DefaultExpression>
+    </column>
+    <column id="18" parent="6" name="created_by">
+      <Position>8</Position>
+      <DataType>INTEGER|0s</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>NULL</DefaultExpression>
+    </column>
+    <index id="19" parent="6" name="id">
+      <ColNames>id</ColNames>
+      <ColumnCollations></ColumnCollations>
+      <Unique>1</Unique>
+    </index>
+    <index id="20" parent="6" name="sqlite_autoindex_domains_1">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>domain</ColNames>
+      <ColumnCollations></ColumnCollations>
+      <Unique>1</Unique>
+    </index>
+    <index id="21" parent="6" name="PRIMARY">
+      <ColNames>domain</ColNames>
+      <ColumnCollations></ColumnCollations>
+    </index>
+    <index id="22" parent="6" name="created">
+      <ColNames>created</ColNames>
+      <ColumnCollations></ColumnCollations>
+    </index>
+    <key id="23" parent="6">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>id</UnderlyingIndexName>
+    </key>
+    <key id="24" parent="6">
+      <ColNames>domain</ColNames>
+      <UnderlyingIndexName>sqlite_autoindex_domains_1</UnderlyingIndexName>
+    </key>
+    <column id="25" parent="7" name="id">
+      <Position>1</Position>
+      <DataType>INTEGER|0s</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+      <DefaultExpression>NULL</DefaultExpression>
+    </column>
+    <column id="26" parent="7" name="domain_id">
+      <Position>2</Position>
+      <DataType>INTEGER|0s</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>NULL</DefaultExpression>
+    </column>
+    <column id="27" parent="7" name="user_id">
+      <Position>3</Position>
+      <DataType>INTEGER|0s</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>NULL</DefaultExpression>
+    </column>
+    <column id="28" parent="7" name="task_id">
+      <Position>4</Position>
+      <DataType>INTEGER|0s</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>NULL</DefaultExpression>
+    </column>
+    <column id="29" parent="7" name="log_id">
+      <Position>5</Position>
+      <DataType>INTEGER|0s</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>NULL</DefaultExpression>
+    </column>
+    <index id="30" parent="7" name="sqlite_autoindex_projects_1">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>domain_id</ColNames>
+      <ColumnCollations></ColumnCollations>
+      <Unique>1</Unique>
+    </index>
+    <index id="31" parent="7" name="sqlite_autoindex_projects_2">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>user_id</ColNames>
+      <ColumnCollations></ColumnCollations>
+      <Unique>1</Unique>
+    </index>
+    <index id="32" parent="7" name="sqlite_autoindex_projects_3">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>task_id</ColNames>
+      <ColumnCollations></ColumnCollations>
+      <Unique>1</Unique>
+    </index>
+    <index id="33" parent="7" name="sqlite_autoindex_projects_4">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>log_id</ColNames>
+      <ColumnCollations></ColumnCollations>
+      <Unique>1</Unique>
+    </index>
+    <key id="34" parent="7">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <key id="35" parent="7">
+      <ColNames>domain_id</ColNames>
+      <UnderlyingIndexName>sqlite_autoindex_projects_1</UnderlyingIndexName>
+    </key>
+    <key id="36" parent="7">
+      <ColNames>user_id</ColNames>
+      <UnderlyingIndexName>sqlite_autoindex_projects_2</UnderlyingIndexName>
+    </key>
+    <key id="37" parent="7">
+      <ColNames>task_id</ColNames>
+      <UnderlyingIndexName>sqlite_autoindex_projects_3</UnderlyingIndexName>
+    </key>
+    <key id="38" parent="7">
+      <ColNames>log_id</ColNames>
+      <UnderlyingIndexName>sqlite_autoindex_projects_4</UnderlyingIndexName>
+    </key>
+    <column id="39" parent="8" name="type">
+      <Position>1</Position>
+      <DataType>text|0s</DataType>
+    </column>
+    <column id="40" parent="8" name="name">
+      <Position>2</Position>
+      <DataType>text|0s</DataType>
+    </column>
+    <column id="41" parent="8" name="tbl_name">
+      <Position>3</Position>
+      <DataType>text|0s</DataType>
+    </column>
+    <column id="42" parent="8" name="rootpage">
+      <Position>4</Position>
+      <DataType>integer|0s</DataType>
+    </column>
+    <column id="43" parent="8" name="sql">
+      <Position>5</Position>
+      <DataType>text|0s</DataType>
+    </column>
+    <column id="44" parent="9" name="name">
+      <Position>1</Position>
+    </column>
+    <column id="45" parent="9" name="seq">
+      <Position>2</Position>
+    </column>
+    <column id="46" parent="10" name="id">
+      <Position>1</Position>
+      <DataType>INTEGER|0s</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+      <DefaultExpression>NULL</DefaultExpression>
+    </column>
+    <column id="47" parent="10" name="domain_id">
+      <Position>2</Position>
+      <DataType>INTEGER|0s</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>NULL</DefaultExpression>
+    </column>
+    <column id="48" parent="10" name="status">
+      <Position>3</Position>
+      <DataType>INTEGER|0s</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>NULL</DefaultExpression>
+    </column>
+    <column id="49" parent="10" name="priority">
+      <Position>4</Position>
+      <DataType>INTEGER|0s</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>NULL</DefaultExpression>
+    </column>
+    <column id="50" parent="10" name="title">
+      <Position>5</Position>
+      <DataType>INTEGER|0s</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>NULL</DefaultExpression>
+    </column>
+    <column id="51" parent="10" name="description">
+      <Position>6</Position>
+      <DataType>INTEGER|0s</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>NULL</DefaultExpression>
+    </column>
+    <index id="52" parent="10" name="sqlite_autoindex_task_1">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>domain_id</ColNames>
+      <ColumnCollations></ColumnCollations>
+      <Unique>1</Unique>
+    </index>
+    <index id="53" parent="10" name="domains_id">
+      <ColNames>domain_id</ColNames>
+      <ColumnCollations></ColumnCollations>
+    </index>
+    <key id="54" parent="10">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <key id="55" parent="10">
+      <ColNames>domain_id</ColNames>
+      <UnderlyingIndexName>sqlite_autoindex_task_1</UnderlyingIndexName>
+    </key>
+  </database-model>
+</dataSource>
