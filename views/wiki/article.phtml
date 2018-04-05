@@ -1,0 +1,19 @@
+<?php
+/** @var \App\Models\Wiki\Article $article */
+/** @var \App\Models\Wiki\Category $category */
+?>
+
+
+
+<div class="row bordered">
+    <div class="col-md-2">
+        <h4>Kategorien</h4>
+        <?php echo $tree ?>
+    </div>
+    <div class="col-md-10">
+        <div class="inner">
+            <h1><?php echo $article->getTitle() ?></h1>
+            <?php echo $article->getContent() ?>
+        </div>
+    </div>
+</div>

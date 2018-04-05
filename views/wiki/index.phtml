@@ -1,0 +1,31 @@
+<?php
+/** @var string $tree */
+/** @var \App\Models\Wiki\Article[] $articles */
+/** @var \App\Models\Wiki\Category $category */
+?>
+
+<div class="row bordered">
+    <div class="col-md-2">
+        <h4>Kategorien</h4>
+        <?php echo $tree ?>
+    </div>
+    <div class="col-md-10">
+        <div class="inner">
+            <?php if (isset($articles)): ?>
+                <div class="row article-grid">
+                    <?php foreach ($articles as $article): ?>
+                        <a href="<?php echo $article->getUrl() ?>" class="col-md-4">
+                            <div>
+                                <h3><span class="fa fa-newspaper-o"></span> <?php echo $article->getTitle() ?></h3>
+                                <p class="text-right">
+                                    <span class="pull-left"><?php echo $article->getCreatedDate() ?></span>
+                                    <span class="label label-default"><span class="fa fa-user"></span> <?php echo $article->getAuthor() ?></span>
+                                </p>
+                            </div>
+                        </a>
+                    <?php endforeach;  ?>
+                </div>
+            <?php endif; ?>
+        </div>
+    </div>
+</div>

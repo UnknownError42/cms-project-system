@@ -1,0 +1,115 @@
+<?php
+/** @var \App\Models\Project[] $projects */
+/** @var \Project\Group[] $groups */
+/** @var \Project\AlphaGroup[] $alphas */
+/** @var \Project\Group[] $dirs */
+/** @var string $group */
+$group = isset($group) ? $group : null;
+$alphas = isset($alphas) ? $alphas : array();
+$dirs = isset($dirs) ? $dirs : array();
+?>
+
+<ul class="nav nav-tabs">
+    <?php foreach ($groups as $pGroup): ?>
+        <?php $active = ($pGroup->getName() === $group) ?>
+        <?php $groupUrl = '?controller=index&action=index&group=' . $pGroup->getName() ?>
+        <li<?php if ($active): ?> class="active"<?php endif; ?>>
+            <a href="<?php echo $groupUrl ?>" data-toggle="tooltip" data-placement="top" title="<?php echo $pGroup->getName() ?>"><?php echo $pGroup->getLabel() ?></a>
+        </li>
+    <?php endforeach; ?>
+</ul>
+
+<div class="text-center">
+    <ul class="list-inline center-block">
+        <?php foreach ($alphas as $alphaGroup): ?>
+            <li>
+                <?php echo $alphaGroup->render() ?>
+            </li>
+        <?php endforeach; ?>
+    </ul>
+</div>
+
+<?php if (isset($projects) && count($projects) > 0): ?>
+    <table class="table table-bordered table-striped table-hover">
+        <thead>
+        <tr>
+            <th>Domain</th>
+            <th>Projekt</th>
+            <th width="100">Type</th>
+            <th width="200" colspan="2">Erstell am</th>
+        </tr>
+        </thead>
+        <tbody>
+        <?php foreach ($alphas as $alphaGroup): ?>
+
+            <?php foreach ($alphaGroup->getProjects() as $i => $project): ?>
+                <?php $label = ($project->getType() === 'shop') ? 'info' : 'default' ?>
+
+                <tr<?php if ($i === 0): ?> id="<?php echo $alphaGroup->getKey() ?>"<?php endif; ?>>
+                    <td>
+                        <a href="http://<?php echo $project->getUrl() ?>" target="_blank">
+                            <?php echo $project->getUrl() ?>
+                        </a>
+                        <?php if (false !== $dbUrl && false !== ($dbAdmin = $project->getDbUrl())): ?>
+                            <a href="<?php echo $dbAdmin ?>" target="_blank" class="pull-right btn btn-default btn-xs">
+                                <span class="fa fa-database"></span>
+                            </a>
+                        <?php endif; ?>
+                    </td>
+                    <td><?php echo $project->getName() ?></td>
+                    <td><span class="label label-<?php echo $label ?>"><?php echo $project->getType() ?></span></td>
+                    <td><?php echo $project->getCreatedDate() ?></td>
+                    <td width="50" class="text-center">
+                        <?php if ($project->isMovable()): ?>
+                            <a href="#" class="btn btn-link btn-xs" data-project="<?php echo $project->getName() ?>" data-target=".move-modal" data-toggle="modal">
+                                <span class="glyphicon glyphicon-transfer"></span>
+                            </a>
+                        <?php else:  ?>
+                            <span class="glyphicon glyphicon-lock text-muted"></span>
+                        <?php endif; ?>
+                    </td>
+                </tr>
+            <?php endforeach; ?>
+        <?php endforeach; ?>
+        </tbody>
+    </table>
+<?php else: ?>
+    <p class="text-center">Keine Projekte vorhanden</p>
+<?php endif; ?>
+
+<div class="modal fade move-modal" tabindex="-1" role="dialog" aria-labelledby="moveModalLabel">
+    <div class="modal-dialog modal-sm" role="document">
+        <form action="?controller=project&action=move" method="post">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="moveModalLabel">Projekt verschieben</h4>
+                </div>
+                <div class="modal-body">
+                    <p class="text-danger">Projekt <strong class="project-name"></strong> verschieben nach: </p>
+                    <select class="form-control" name="to" id="to">
+                        <option>Ordner auswählen</option>
+                        <?php foreach ($dirs as $pGroup): ?>
+                            <option value="<?php echo $pGroup->getName() ?>"><?php echo $pGroup->getName() ?> (<?php echo $pGroup->getLabel() ?>)</option>
+                        <?php endforeach; ?>
+                    </select>
+                    <input type="hidden" class="hidden" name="name" id="name" value="">
+                </div>
+                <div class="modal-footer">
+                    <button type="reset" class="btn btn-default" data-dismiss="modal">Abbrechen</button>
+                    <button type="submit" class="btn btn-danger">Ja, verschieben</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<script>
+    $('.move-modal').on('show.bs.modal', function (event) {
+        var button = $(event.relatedTarget);
+        var project = button.data('project');
+        var modal = $(this);
+        modal.find('#name').val(project);
+        modal.find('.project-name').text(project);
+    })
+</script>

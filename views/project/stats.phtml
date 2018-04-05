@@ -1,0 +1,19 @@
+<?php
+/** @var \App\Models\StatsRow[] $stats */
+
+$json = array();
+foreach ($stats as $row) {
+    $json[] = $row->asArray();
+}
+?>
+
+<div id="stats" style="height: 400px; width: 100%"></div>
+<script>
+    Morris.Bar({
+        element: 'stats',
+        data: <?php echo json_encode($json) ?>,
+        xkey: 'name',
+        ykeys: ['items'],
+        labels: ['Projects']
+    });
+</script>
